@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Evolux Empreiteira - Soluções completas em construções, reformas e acabamentos. Mão de obra qualificada, cumprimento de prazos e qualidade garantida." />
+    <title>Evolux Empreiteira | Construindo hoje, valorizando amanhã</title>
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              'evo-dark': '#0B2447',
+              'evo-medium': '#19376D',
+              'evo-light': '#576CBC',
+              'evo-sky': '#A5D7E8',
+              'evo-gray': '#F5F5F5',
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'fade-in': 'fadeIn 1s ease-out forwards',
+              'float': 'float 3s ease-in-out infinite',
+              'pulse-slow': 'pulse 2s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Poppins', sans-serif; }
+
+      .hero-bg {
+        background:
+          linear-gradient(135deg, rgba(11, 36, 71, 0.92) 0%, rgba(25, 55, 109, 0.85) 60%, rgba(87, 108, 188, 0.65) 100%),
+          url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .grid-pattern {
+        background-image:
+          linear-gradient(rgba(87, 108, 188, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(87, 108, 188, 0.08) 1px, transparent 1px);
+        background-size: 50px 50px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #19376D 0%, #576CBC 100%);
+        box-shadow: 0 10px 30px -10px rgba(25, 55, 109, 0.6);
+        transition: all 0.3s ease;
+      }
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px -10px rgba(25, 55, 109, 0.8);
+        background: linear-gradient(135deg, #0B2447 0%, #19376D 100%);
+      }
+
+      .btn-whatsapp {
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        box-shadow: 0 10px 30px -10px rgba(37, 211, 102, 0.6);
+        transition: all 0.3s ease;
+      }
+      .btn-whatsapp:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px -10px rgba(37, 211, 102, 0.8);
+      }
+
+      .service-card {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(87, 108, 188, 0.1);
+      }
+      .service-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(87, 108, 188, 0.4);
+        box-shadow: 0 25px 50px -12px rgba(11, 36, 71, 0.25);
+      }
+      .service-card:hover .service-icon {
+        transform: scale(1.1) rotate(-5deg);
+        background: linear-gradient(135deg, #0B2447 0%, #576CBC 100%);
+      }
+
+      .feature-icon {
+        transition: all 0.3s ease;
+      }
+      .feature-card:hover .feature-icon {
+        transform: scale(1.15);
+      }
+
+      .whatsapp-float {
+        animation: pulse-ring 2s infinite;
+      }
+      @keyframes pulse-ring {
+        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+        70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+      }
+
+      .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+      }
+      .mobile-menu.open {
+        max-height: 400px;
+      }
+
+      .navbar-scrolled {
+        background: rgba(255, 255, 255, 0.98) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(11, 36, 71, 0.1);
+      }
+      .navbar-scrolled .nav-link,
+      .navbar-scrolled .nav-brand-text {
+        color: #0B2447 !important;
+      }
+      .navbar-scrolled .nav-link:hover {
+        color: #576CBC !important;
+      }
+
+      .section-title {
+        position: relative;
+        display: inline-block;
+      }
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #19376D, #576CBC);
+        border-radius: 2px;
+      }
+
+      .stat-number {
+        background: linear-gradient(135deg, #19376D 0%, #576CBC 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- ============= NAVBAR ============= -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+        <nav class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-3">
+                    <img src="logo.png" alt="Evolux Empreiteira" class="h-12 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                    <div style="display:none;" class="h-12 w-12 bg-evo-medium rounded-lg items-center justify-center text-white font-bold text-xl">E</div>
+                    <span class="nav-brand-text text-white font-bold text-xl tracking-wide hidden sm:block">EVOLUX</span>
+                </a>
+
+                <!-- Desktop nav -->
+                <ul class="hidden lg:flex items-center gap-10">
+                    <li><a href="#servicos" class="nav-link text-white hover:text-evo-sky font-medium transition-colors">Serviços</a></li>
+                    <li><a href="#sobre" class="nav-link text-white hover:text-evo-sky font-medium transition-colors">Sobre</a></li>
+                    <li><a href="#diferenciais" class="nav-link text-white hover:text-evo-sky font-medium transition-colors">Diferenciais</a></li>
+                    <li><a href="#contato" class="nav-link text-white hover:text-evo-sky font-medium transition-colors">Contato</a></li>
+                </ul>
+
+                <!-- CTA + mobile toggle -->
+                <div class="flex items-center gap-4">
+                    <a href="https://wa.me/555198646723?text=Ol%C3%A1%21%20Vim%20pelo%20Instagram%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%0A%0A%F0%9F%93%8D%20Local%20do%20servi%C3%A7o%3A%20%0A%F0%9F%9B%A0%EF%B8%8F%20Tipo%20de%20servi%C3%A7o%3A%20%0A%F0%9F%93%90%20Medidas%20aproximadas%3A"
+                       target="_blank" rel="noopener"
+                       class="hidden md:inline-flex btn-primary text-white px-6 py-3 rounded-full font-semibold text-sm">
+                        <i class="fa-solid fa-calendar-check mr-2"></i>Solicitar Orçamento
+                    </a>
+                    <button id="menuToggle" class="lg:hidden text-white text-2xl" aria-label="Abrir menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="mobile-menu lg:hidden bg-white rounded-b-2xl shadow-xl">
+                <ul class="py-4 px-6 space-y-4">
+                    <li><a href="#servicos" class="block text-evo-dark font-medium py-2">Serviços</a></li>
+                    <li><a href="#sobre" class="block text-evo-dark font-medium py-2">Sobre</a></li>
+                    <li><a href="#diferenciais" class="block text-evo-dark font-medium py-2">Diferenciais</a></li>
+                    <li><a href="#contato" class="block text-evo-dark font-medium py-2">Contato</a></li>
+                    <li>
+                        <a href="https://wa.me/555198646723?text=Ol%C3%A1%21%20Vim%20pelo%20Instagram%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%0A%0A%F0%9F%93%8D%20Local%20do%20servi%C3%A7o%3A%20%0A%F0%9F%9B%A0%EF%B8%8F%20Tipo%20de%20servi%C3%A7o%3A%20%0A%F0%9F%93%90%20Medidas%20aproximadas%3A"
+                           target="_blank" rel="noopener"
+                           class="block bg-evo-medium text-white text-center px-6 py-3 rounded-full font-semibold">
+                            <i class="fa-brands fa-whatsapp mr-2"></i>Solicitar Orçamento
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============= HERO ============= -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <!-- Decorative shapes -->
+        <div class="absolute top-32 left-10 w-72 h-72 bg-evo-light/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-evo-medium/30 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in-up">
+                    <span class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-evo-sky px-4 py-2 rounded-full text-sm font-medium border border-white/20 mb-6">
+                        <i class="fa-solid fa-helmet-safety"></i> Engenharia & Arquitetura
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                        Transformamos <span class="text-evo-sky">projetos</span> em <span class="text-evo-sky">realidade!</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-xl leading-relaxed">
+                        Do planejamento à entrega, cuidamos de cada detalhe para você. Soluções completas em construções, reformas e acabamentos com <strong class="text-white">qualidade</strong>, <strong class="text-white">compromisso</strong> e <strong class="text-white">confiança</strong>.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/555198646723?text=Ol%C3%A1%21%20Vim%20pelo%20Instagram%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%0A%0A%F0%9F%93%8D%20Local%20do%20servi%C3%A7o%3A%20%0A%F0%9F%9B%A0%EF%B8%8F%20Tipo%20de%20servi%C3%A7o%3A%20%0A%F0%9F%93%90%20Medidas%20aproximadas%3A"
+                           target="_blank" rel="noopener"
+                           class="btn-whatsapp inline-flex items-center justify-center text-white px-8 py-4 rounded-full font-bold text-base">
+                            <i class="fa-brands fa-whatsapp text-xl mr-3"></i>Agende já seu orçamento
+                        </a>
+                        <a href="#servicos"
+                           class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-full font-semibold text-base border border-white/30 hover:bg-white/20 transition-all">
+                            Conheça nossos serviços <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Trust badges -->
+                    <div class="mt-12 grid grid-cols-3 gap-6 max-w-lg">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white"><i class="fa-solid fa-shield-halved text-evo-sky"></i></div>
+                            <div class="text-xs text-gray-300 mt-2">Qualidade<br/>Garantida</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white"><i class="fa-solid fa-helmet-safety text-evo-sky"></i></div>
+                            <div class="text-xs text-gray-300 mt-2">Equipe<br/>Especializada</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white"><i class="fa-solid fa-calendar-check text-evo-sky"></i></div>
+                            <div class="text-xs text-gray-300 mt-2">Prazos<br/>Cumpridos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero image card -->
+                <div class="hidden lg:block relative">
+                    <div class="relative">
+                        <div class="absolute -top-6 -left-6 w-full h-full border-4 border-evo-sky/40 rounded-3xl"></div>
+                        <img src="https://images.unsplash.com/photo-1565182999561-18d7dc61c393?auto=format&fit=crop&w=800&q=80"
+                             alt="Casa moderna construída pela Evolux"
+                             class="relative rounded-3xl shadow-2xl w-full h-[500px] object-cover" />
+                        <!-- Floating badge -->
+                        <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-2xl p-5 flex items-center gap-4 animate-float">
+                            <div class="w-14 h-14 bg-evo-medium rounded-full flex items-center justify-center text-white text-2xl">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <div>
+                                <div class="text-evo-dark font-bold">+100 obras</div>
+                                <div class="text-sm text-gray-500">com excelência</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= PROBLEMA x SOLUÇÃO ============= -->
+    <section id="diferenciais" class="py-24 bg-evo-gray relative overflow-hidden">
+        <div class="absolute inset-0 grid-pattern opacity-50"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <span class="text-evo-medium font-semibold uppercase tracking-widest text-sm">Por que escolher a Evolux?</span>
+                <h2 class="section-title text-3xl md:text-5xl font-extrabold text-evo-dark mt-4 mb-6">
+                    Sua obra sem dor de cabeça
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
+                    Você já teve problemas com a mão de obra da sua obra? Sabemos que escolher a empresa certa faz toda a diferença.
+                </p>
+            </div>
+
+            <!-- Problemas -->
+            <div class="grid md:grid-cols-2 gap-10 items-center mb-16">
+                <div class="reveal">
+                    <h3 class="text-2xl font-bold text-evo-dark mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-triangle-exclamation text-red-500"></i> Problemas comuns
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
+                            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-500 flex-shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Atrasos constantes</h4>
+                                <p class="text-sm text-gray-500">Obras que nunca terminam no prazo combinado.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
+                            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-500 flex-shrink-0">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Serviço mal executado</h4>
+                                <p class="text-sm text-gray-500">Resultado abaixo do esperado e sem garantia.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
+                            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-500 flex-shrink-0">
+                                <i class="fa-solid fa-user-xmark"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Falta de compromisso</h4>
+                                <p class="text-sm text-gray-500">Equipes que somem ou abandonam a obra.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
+                            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-500 flex-shrink-0">
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Retrabalho</h4>
+                                <p class="text-sm text-gray-500">Custos extras com correções e refações.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Solução -->
+                <div class="reveal bg-gradient-to-br from-evo-dark to-evo-medium rounded-3xl p-10 text-white shadow-2xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-evo-sky/30 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-circle-check text-2xl text-evo-sky"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">A solução Evolux</h3>
+                    </div>
+                    <p class="text-lg text-gray-200 mb-8 leading-relaxed">
+                        A <strong class="text-evo-sky">Evolux Empreiteira</strong> traz <strong>mão de obra qualificada</strong> para sua obra acontecer sem dor de cabeça. Compromisso, qualidade e transparência em cada etapa.
+                    </p>
+                    <a href="https://wa.me/555198646723?text=Ol%C3%A1%21%20Vim%20pelo%20Instagram%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%0A%0A%F0%9F%93%8D%20Local%20do%20servi%C3%A7o%3A%20%0A%F0%9F%9B%A0%EF%B8%8F%20Tipo%20de%20servi%C3%A7o%3A%20%0A%F0%9F%93%90%20Medidas%20aproximadas%3A"
+                       target="_blank" rel="noopener"
+                       class="btn-whatsapp inline-flex items-center text-white px-8 py-4 rounded-full font-bold">
+                        <i class="fa-brands fa-whatsapp text-xl mr-3"></i>Fale com a Evolux
+                    </a>
+                </div>
+            </div>
+
+            <!-- Destaques (4 cards) -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+                <div class="feature-card bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-xl transition-all">
+                    <div class="feature-icon w-16 h-16 mx-auto bg-gradient-to-br from-evo-medium to-evo-light rounded-2xl flex items-center justify-center text-white text-2xl mb-4">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h4 class="font-bold text-evo-dark mb-2">Profissionais qualificados</h4>
+                    <p class="text-sm text-gray-500">Equipe técnica experiente e dedicada.</p>
+                </div>
+                <div class="feature-card bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-xl transition-all">
+                    <div class="feature-icon w-16 h-16 mx-auto bg-gradient-to-br from-evo-medium to-evo-light rounded-2xl flex items-center justify-center text-white text-2xl mb-4">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <h4 class="font-bold text-evo-dark mb-2">Cumprimento de prazos</h4>
+                    <p class="text-sm text-gray-500">Cronograma respeitado do início ao fim.</p>
+                </div>
+                <div class="feature-card bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-xl transition-all">
+                    <div class="feature-icon w-16 h-16 mx-auto bg-gradient-to-br from-evo-medium to-evo-light rounded-2xl flex items-center justify-center text-white text-2xl mb-4">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <h4 class="font-bold text-evo-dark mb-2">Qualidade garantida</h4>
+                    <p class="text-sm text-gray-500">Acabamento impecável em cada detalhe.</p>
+                </div>
+                <div class="feature-card bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-xl transition-all">
+                    <div class="feature-icon w-16 h-16 mx-auto bg-gradient-to-br from-evo-medium to-evo-light rounded-2xl flex items-center justify-center text-white text-2xl mb-4">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h4 class="font-bold text-evo-dark mb-2">Transparência e confiança</h4>
+                    <p class="text-sm text-gray-500">Comunicação clara em todas as etapas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= SERVIÇOS ============= -->
+    <section id="servicos" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-evo-medium font-semibold uppercase tracking-widest text-sm">Nossos Serviços</span>
+                <h2 class="section-title text-3xl md:text-5xl font-extrabold text-evo-dark mt-4 mb-6">
+                    Soluções completas para sua obra
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
+                    Atendemos todas as etapas do seu projeto — do conceito arquitetônico à entrega final com acabamento perfeito.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="service-card bg-white rounded-2xl p-8 reveal">
+                    <div class="service-icon w-16 h-16 bg-gradient-to-br from-evo-medium to-evo-light rounded-2xl flex items-center justify-center text-white text-2xl mb-6 transition-all">
+                        <i class="fa-solid fa-drafting-compass"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-evo-dark mb-3">Projetos Arquitetônicos</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Projetos arquitetônicos completos e execução de obras com toda a expertise técnica.
+                    </p>
+                    <a href="https://wa.me/555198646723?text=Ol%C3%A1%21%20Vim%20pelo%20Instagram%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%0A%0A%F0%9F%93%8D%20Local%20do%20servi%C3%A7o%3A%20%0A%F0%9F%9B%A0%EF%B8%8F%20Tipo%20de%20servi%C3%A7o%3A%20%0A%F0%9F%93%90%20Medidas%20aproximadas%3A"
+                       target="_blank" rel="noopener"
+                       class="text-evo-medium font-semibold inline-flex items-center hover:gap-3 transition-all gap-2">
+                        Saber mais <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card bg-white rounded-2xl p-8 reveal">
+                    <div class="service-icon w-16 h-16 bg-gradient-to-br from-evo-medium to-evo-light rounded-2xl flex items-center justify-center text-white text-2xl mb-6 transition-all">
+                        <i class="fa-solid fa-trowel-bricks"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-evo-dark mb-3">Reformas e Construções</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Do pequeno reparo à construção completa, com qualidade e segurança em cada etapa.
+                    </p>
+                    <a href="https://wa.me/555198646723?text=Ol%C3%A1%21%20Vim%20pelo%20Instagram%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%0A%0A%F0%9F%93%8D%20Local%20do%20servi%C3%A7o%3A%20%0A%F0%9F%9B%A0%EF%B8%8F%20Tipo%20de%20servi%C3%A7o%3A%20%0A%F0%9F%93%90%20Medidas%20aproximadas%3A"
+                       target="_blank" rel="noopener"
+                       class="text-evo-medium font-semibold inline-flex items-center hover:gap-3 transition-all gap-2">
+                        Saber mais <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card bg-white rounded-2xl p-8 reveal">
+                    <div class="service-icon w-16 h-16 bg-gradient-to-br from-evo-medium to-evo-light rounded-2xl flex items-center justify-center text-white text-2xl mb-6 transition-all">
+                        <i class="fa-solid fa-door-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-evo-dark mb-3">Portas e Janelas</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Instalação de esquadrias em diversos modelos e materiais, com acabamento e durabilidade.
+                    </p>
+                    <a href="https://wa.me/555198646723?text=Ol%C3%A1%21%20Vim%20pelo%20Instagram%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%0A%0A%F0%9F%93%8D%20Local%20do%20servi%C3%A7o%3A%20%0A%F0%9F%9B%A0%EF%B8%8F%20Tipo%20de%20servi%C3%A7o%3A%20%0A%F0%9F%93%90%20Medidas%20aproximadas%3A"
+                       target="_blank" rel="noopener"
+                       class="text-evo-medium font-semibold inline-flex items-center hover:gap-3 transition-all gap-2">
+                        Saber mais <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card bg-white rounded-2xl p-8 reveal">
+                    <div class="service-icon w-16 h-16 bg-gradient-to-br from-evo-medium to-evo-light rounded-2xl flex items-center justify-center text-white text-2xl mb-6 transition-all">
+                        <i class="fa-solid fa-paint-roller"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-evo-dark mb-3">Acabamentos em Geral</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Pintura, revestimentos, forros, pisos e todos os detalhes que fazem a diferença.
+                    </p>
+                    <a href="https://wa.me/555198646723?text=Ol%C3%A1%21%20Vim%20pelo%20Instagram%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%0A%0A%F0%9F%93%8D%20Local%20do%20servi%C3%A7o%3A%20%0A%F0%9F%9B%A0%EF%B8%8F%20Tipo%20de%20servi%C3%A7o%3A%20%0A%F0%9F%93%90%20Medidas%20aproximadas%3A"
+                       target="_blank" rel="noopener"
+                       class="text-evo-medium font-semibold inline-flex items-center hover:gap-3 transition-all gap-2">
+                        Saber mais <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom highlights -->
+            <div class="mt-20 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+                <div class="bg-evo-gray rounded-2xl p-6 text-center">
+                    <i class="fa-solid fa-helmet-safety text-3xl text-evo-medium mb-3"></i>
+                    <div class="font-bold text-evo-dark text-sm">Mão de obra qualificada</div>
+                </div>
+                <div class="bg-evo-gray rounded-2xl p-6 text-center">
+                    <i class="fa-solid fa-clipboard-check text-3xl text-evo-medium mb-3"></i>
+                    <div class="font-bold text-evo-dark text-sm">Compromisso com prazos e qualidade</div>
+                </div>
+                <div class="bg-evo-gray rounded-2xl p-6 text-center">
+                    <i class="fa-solid fa-users text-3xl text-evo-medium mb-3"></i>
+                    <div class="font-bold text-evo-dark text-sm">Atendimento personalizado</div>
+                </div>
+                <div class="bg-evo-gray rounded-2xl p-6 text-center">
+                    <i class="fa-solid fa-trophy text-3xl text-evo-medium mb-3"></i>
+                    <div class="font-bold text-evo-dark text-sm">Confiança que gera resultados</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= SOBRE ============= -->
+    <section id="sobre" class="py-24 bg-evo-gray relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80"
+                             alt="Equipe Evolux em obra"
+                             class="rounded-3xl shadow-2xl w-full h-[500px] object-cover" />
+                        <div class="absolute -bottom-8 -right-8 bg-white rounded-2xl shadow-2xl p-6 max-w-xs hidden md:block">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="flex text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <span class="text-sm font-bold text-evo-dark">5.0</span>
+                            </div>
+                            <p class="text-sm text-gray-600 italic">"Profissionais sérios, comprometidos e com excelente acabamento."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <span class="text-evo-medium font-semibold uppercase tracking-widest text-sm">Sobre a Evolux</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-evo-dark mt-4 mb-6 leading-tight">
+                        Construindo hoje, <span class="text-evo-light">valorizando amanhã.</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Somos uma empresa especializada em <strong>engenharia e arquitetura</strong>, oferecendo soluções completas para construções, reformas e acabamentos. Nossa missão é entregar cada projeto com excelência técnica e o cuidado que sua obra merece.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Sob a responsabilidade técnica de <strong>Diovana de Oliveira</strong>, atuamos com transparência e dedicação para transformar seu projeto em realidade.
+                    </p>
+
+                    <div class="grid grid-cols-3 gap-4 mb-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-extrabold stat-number">+100</div>
+                            <div class="text-sm text-gray-500 mt-1">Obras entregues</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-extrabold stat-number">100%</div>
+                            <div class="text-sm text-gray-500 mt-1">Compromisso</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-extrabold stat-number">5★</div>
+                            <div class="text-sm text-gray-500 mt-1">Avaliação</div>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/555198646723?text=Ol%C3%A1%21%20Vim%20pelo%20Instagram%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%0A%0A%F0%9F%93%8D%20Local%20do%20servi%C3%A7o%3A%20%0A%F0%9F%9B%A0%EF%B8%8F%20Tipo%20de%20servi%C3%A7o%3A%20%0A%F0%9F%93%90%20Medidas%20aproximadas%3A"
+                       target="_blank" rel="noopener"
+                       class="btn-primary inline-flex items-center text-white px-8 py-4 rounded-full font-bold">
+                        <i class="fa-solid fa-message mr-3"></i>Fale com nossa equipe
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= CTA FINAL ============= -->
+    <section class="py-24 bg-gradient-to-br from-evo-dark via-evo-medium to-evo-light relative overflow-hidden">
+        <div class="absolute inset-0 grid-pattern opacity-20"></div>
+        <div class="absolute top-0 left-1/4 w-72 h-72 bg-evo-sky/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center relative z-10 reveal">
+            <i class="fa-solid fa-helmet-safety text-6xl text-evo-sky mb-6"></i>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                Pronto para tirar seu projeto do papel?
+            </h2>
+            <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto">
+                Agende já seu orçamento e dê o primeiro passo para construir o que você sonha. Atendimento rápido e sem compromisso!
+            </p>
+            <a href="https://wa.me/555198646723?text=Ol%C3%A1%21%20Vim%20pelo%20Instagram%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%0A%0A%F0%9F%93%8D%20Local%20do%20servi%C3%A7o%3A%20%0A%F0%9F%9B%A0%EF%B8%8F%20Tipo%20de%20servi%C3%A7o%3A%20%0A%F0%9F%93%90%20Medidas%20aproximadas%3A"
+               target="_blank" rel="noopener"
+               class="btn-whatsapp inline-flex items-center text-white px-10 py-5 rounded-full font-bold text-lg">
+                <i class="fa-brands fa-whatsapp text-2xl mr-3"></i>Solicitar orçamento agora
+            </a>
+            <div class="mt-8 flex items-center justify-center gap-2 text-evo-sky">
+                <i class="fa-solid fa-bolt"></i>
+                <span class="font-semibold">Resposta em poucos minutos!</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= FOOTER ============= -->
+    <footer id="contato" class="bg-evo-dark text-gray-300 pt-20 pb-8 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Brand -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="logo.png" alt="Evolux" class="h-14 w-auto bg-white p-1 rounded-lg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                        <div style="display:none;" class="h-14 w-14 bg-white rounded-lg items-center justify-center text-evo-dark font-bold text-2xl">E</div>
+                        <div>
+                            <div class="text-white font-extrabold text-xl tracking-wide">EVOLUX</div>
+                            <div class="text-xs text-evo-sky tracking-widest">EMPREITEIRA</div>
+                        </div>
+                    </div>
+                    <p class="italic text-evo-sky font-medium mb-4">"Construindo hoje, valorizando amanhã."</p>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Serviços de engenharia e arquitetura. Mão de obra qualificada para sua obra acontecer sem dor de cabeça.
+                    </p>
+                </div>
+
+                <!-- Navegação -->
+                <div>
+                    <h4 class="text-white font-bold mb-5 text-lg">Navegação</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#home" class="hover:text-evo-sky transition-colors flex items-center gap-2"><i class="fa-solid fa-angle-right text-xs"></i> Início</a></li>
+                        <li><a href="#servicos" class="hover:text-evo-sky transition-colors flex items-center gap-2"><i class="fa-solid fa-angle-right text-xs"></i> Serviços</a></li>
+                        <li><a href="#sobre" class="hover:text-evo-sky transition-colors flex items-center gap-2"><i class="fa-solid fa-angle-right text-xs"></i> Sobre</a></li>
+                        <li><a href="#diferenciais" class="hover:text-evo-sky transition-colors flex items-center gap-2"><i class="fa-solid fa-angle-right text-xs"></i> Diferenciais</a></li>
+                    </ul>
+                </div>
+
+                <!-- Serviços -->
+                <div>
+                    <h4 class="text-white font-bold mb-5 text-lg">Serviços</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-evo-sky text-xs"></i> Projetos Arquitetônicos</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-evo-sky text-xs"></i> Execução de Obras</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-evo-sky text-xs"></i> Reformas e Construções</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-evo-sky text-xs"></i> Portas e Janelas</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-evo-sky text-xs"></i> Acabamentos em Geral</li>
+                    </ul>
+                </div>
+
+                <!-- Contato -->
+                <div>
+                    <h4 class="text-white font-bold mb-5 text-lg">Contato</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-user-tie text-evo-sky mt-1"></i>
+                            <div>
+                                <div class="text-white font-semibold">Diovana de Oliveira</div>
+                                <div class="text-xs text-gray-400">Responsável Técnica</div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/555198646723" target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-evo-sky transition-colors">
+                                <i class="fa-brands fa-whatsapp text-evo-sky"></i>
+                                (51) 99864-6723
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:evoluxempreiteira@gmail.com" class="flex items-center gap-3 hover:text-evo-sky transition-colors break-all">
+                                <i class="fa-solid fa-envelope text-evo-sky"></i>
+                                evoluxempreiteira@gmail.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/evoluxempreiteira/" target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-evo-sky transition-colors">
+                                <i class="fa-brands fa-instagram text-evo-sky"></i>
+                                @evoluxempreiteira
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Social -->
+                    <div class="flex items-center gap-3 mt-6">
+                        <a href="https://www.instagram.com/evoluxempreiteira/" target="_blank" rel="noopener"
+                           class="w-10 h-10 bg-white/10 hover:bg-evo-light rounded-full flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-instagram text-white"></i>
+                        </a>
+                        <a href="https://wa.me/555198646723" target="_blank" rel="noopener"
+                           class="w-10 h-10 bg-white/10 hover:bg-green-500 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-whatsapp text-white"></i>
+                        </a>
+                        <a href="mailto:evoluxempreiteira@gmail.com"
+                           class="w-10 h-10 bg-white/10 hover:bg-evo-light rounded-full flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-envelope text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-sm text-gray-400 text-center md:text-left">
+                    © <span id="year"></span> <strong class="text-white">Evolux Empreiteira</strong>. Todos os direitos reservados.
+                </p>
+                <p class="text-sm text-gray-400 flex items-center gap-2">
+                    Serviços de Engenharia e Arquitetura <i class="fa-solid fa-helmet-safety text-evo-sky"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============= FLOATING WHATSAPP ============= -->
+    <a href="https://wa.me/555198646723?text=Ol%C3%A1%21%20Vim%20pelo%20Instagram%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%0A%0A%F0%9F%93%8D%20Local%20do%20servi%C3%A7o%3A%20%0A%F0%9F%9B%A0%EF%B8%8F%20Tipo%20de%20servi%C3%A7o%3A%20%0A%F0%9F%93%90%20Medidas%20aproximadas%3A"
+       target="_blank" rel="noopener"
+       aria-label="Falar no WhatsApp"
+       class="whatsapp-float fixed bottom-6 right-6 w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center text-white text-3xl shadow-2xl z-50 transition-transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- ============= JS ============= -->
+    <script>
+      // Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('navbar-scrolled');
+        } else {
+          navbar.classList.remove('navbar-scrolled');
+        }
+      });
+
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-xmark');
+      });
+
+      // Close mobile menu on link click
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          const icon = menuToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-xmark');
+        });
+      });
+
+      // Reveal on scroll
+      const reveals = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      reveals.forEach((el) => revealObserver.observe(el));
+    </script>
+</body>
+</html>
