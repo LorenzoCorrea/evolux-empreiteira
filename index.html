@@ -6,6 +6,11 @@
     <meta name="description" content="Evolux Empreiteira - Soluções completas em construções, reformas e acabamentos. Mão de obra qualificada, cumprimento de prazos e qualidade garantida." />
     <title>Evolux Empreiteira | Construindo hoje, valorizando amanhã</title>
 
+    <!-- Favicon (aba do navegador) -->
+    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="shortcut icon" type="image/png" href="logo.png" />
+    <link rel="apple-touch-icon" href="logo.png" />
+
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -190,9 +195,7 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <a href="#home" class="flex items-center gap-3">
-                    <img src="logo.png" alt="Evolux Empreiteira" class="h-12 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-                    <div style="display:none;" class="h-12 w-12 bg-evo-medium rounded-lg items-center justify-center text-white font-bold text-xl">E</div>
-                    <span class="nav-brand-text text-white font-bold text-xl tracking-wide hidden sm:block">EVOLUX</span>
+                    <img id="navLogo" src="logo.png" alt="Evolux Empreiteira" class="h-14 w-auto bg-white rounded-lg p-1 shadow-md" />
                 </a>
 
                 <!-- Desktop nav -->
@@ -286,9 +289,9 @@
                 <div class="hidden lg:block relative">
                     <div class="relative">
                         <div class="absolute -top-6 -left-6 w-full h-full border-4 border-evo-sky/40 rounded-3xl"></div>
-                        <img src="https://images.unsplash.com/photo-1565182999561-18d7dc61c393?auto=format&fit=crop&w=800&q=80"
-                             alt="Casa moderna construída pela Evolux"
-                             class="relative rounded-3xl shadow-2xl w-full h-[500px] object-cover" />
+                        <img src="hero-engenheira.jpg"
+                             alt="Engenheira da Evolux acompanhando a obra"
+                             class="relative rounded-3xl shadow-2xl w-full h-[500px] object-cover object-center" />
                         <!-- Floating badge -->
                         <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-2xl p-5 flex items-center gap-4 animate-float">
                             <div class="w-14 h-14 bg-evo-medium rounded-full flex items-center justify-center text-white text-2xl">
